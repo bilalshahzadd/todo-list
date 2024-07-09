@@ -3,17 +3,24 @@
     <div class="container my-4" id="formContainer">
         <h1 class="display-6 container">Save Your Notes Below.</h1>
         <hr>
-        <form method="POST">
+        <form method="POST" #todoForm="ngForm" (ngSubmit)="addTodo()" novalidate>
             <div class="mb-3">
                 <label for="title" class="form-label">Title Here.</label>
-                <input type="text" class="form-control" [(ngModel)]="todoObj.title" id="title" name="title">
+                <input type="text" class="form-control" required [(ngModel)]="todoObj.title" id="title" name="title"
+                    #title="ngModel">
+                <div *ngIf="title.invalid && (title.dirty || title.touched)" class="invalid-feedback">
+                    Title is required.
+                </div>
             </div>
             <div class="form-floating">
                 <textarea class="form-control" [(ngModel)]="todoObj.description" id="description" style="height: 100px"
-                    name="description"></textarea>
+                    name="description" required #description="ngModel"></textarea>
+                <div *ngIf="description.invalid && (description.dirty || description.touched)" class="invalid-feedback">
+                    Description is required.
+                </div>
                 <label for="description">Description Here.</label>
             </div>
-            <button type="submit" class="btn btn-primary my-2" (click)="addTodo()">Submit</button>
+            <button type="submit" class="btn btn-primary my-2" [disabled]="todoForm.invalid">Submit</button>
         </form>
     </div>
 </div>
