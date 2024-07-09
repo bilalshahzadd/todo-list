@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="container my-4" id="formContainer">
+        <h1 class="display-6 container">Save Your Notes Below.</h1>
+        <hr>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title Here.</label>
+                <input type="text" class="form-control" [(ngModel)]="todoObj.title" id="title" name="title">
+            </div>
+            <div class="form-floating">
+                <textarea class="form-control" [(ngModel)]="todoObj.description" id="description" style="height: 100px"
+                    name="description"></textarea>
+                <label for="description">Description Here.</label>
+            </div>
+            <button type="submit" class="btn btn-primary my-2" (click)="addTodo()">Submit</button>
+        </form>
+    </div>
+</div>
