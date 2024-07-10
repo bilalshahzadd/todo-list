@@ -1,25 +1,39 @@
 <app-navbar></app-navbar>
+<app-modal></app-modal>
+
 <div class="container my-4">
-    <h1 class="display-6">Saved Notes Below.</h1>
-</div>
-<hr>
-<div class="container my-4">
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Date/Time</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let todo of todos; let i =index">
-                <td>{{i+1}}</td>
-                <td>{{todo.title}}</td>
-                <td>{{todo.description}}</td>
-                <td>{{todo.date}}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div *ngIf="todos.length <= 0">
+        <h1 class="display-6">No todos found.</h1>
+    </div>
+    <div *ngIf="todos.length > 0">
+        <div class="container my-4">
+            <h1 class="display-6">Saved Notes Below.</h1>
+        </div>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date/Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let todo of todos; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.description}}</td>
+                    <td>{{todo.date}}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" id={{todo.id}} (click)="getData($event)"
+                            data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                        <button class="btn btn-danger mx-2 btn-sm" id={{todo.id}}
+                            (click)="deleteTodo($event)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

@@ -1,0 +1,27 @@
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="editModalLabel">Edit your task</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form method="POST" #todoForm="ngForm" (ngSubmit)="updateTodo()" novalidate>
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Edit Title Here.</label>
+                        <input type="text" class="form-control" [(ngModel)]="todoObj.title"
+                            required id="title" name="title">
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control"  id="description"
+                            style="height: 100px" name="description" required
+                            [(ngModel)]="todoObj.description"></textarea>
+                        <label for="description">Edit Description Here.</label>
+                    </div>
+                    <input type="hidden" value="{{todoObj.id}}">
+                    <button type="submit" class="btn btn-primary my-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

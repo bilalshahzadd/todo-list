@@ -11,9 +11,10 @@ import { CommonModule } from '@angular/common';
   imports: [NavbarComponent, FormsModule, CommonModule],
   templateUrl: './home.component.html',
 })
+
 export class HomeComponent {
 
-  todoObj: any = {
+  todoObj: { title: string, description: string } = {
     title: "",
     description: "",
   }
