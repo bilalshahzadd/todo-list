@@ -1,15 +1,17 @@
 <app-navbar></app-navbar>
 <div class="container">
     <div class="container my-4" id="formContainer">
-        <h1 class="display-6 container">Save Your Notes Below.</h1>
+        <h2 class="p-0">Save Your Notes Below.</h2>
         <hr>
         <form method="POST" #todoForm="ngForm" (ngSubmit)="addTodo()" novalidate>
             <div class="mb-3">
                 <label for="title" class="form-label">Title Here.</label>
-                <input type="text" class="form-control" required [(ngModel)]="todoObj.title" id="title" name="title" #title="ngModel">
+                <input type="text" class="form-control" required [(ngModel)]="todoObj.title" id="title" name="title"
+                    #title="ngModel">
             </div>
             <div class="form-floating">
-                <textarea class="form-control" [(ngModel)]="todoObj.description" id="description" style="height: 100px" name="description" required #description="ngModel"></textarea>
+                <textarea class="form-control" [(ngModel)]="todoObj.description" id="description" style="height: 100px"
+                    name="description" required #description="ngModel"></textarea>
                 <label for="description">Description Here.</label>
             </div>
             <button type="submit" class="btn btn-primary my-2" [disabled]="todoForm.invalid">Submit</button>
