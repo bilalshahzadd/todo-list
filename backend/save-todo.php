@@ -1,5 +1,5 @@
 <?php
-include './db-connect.php';
+include './partials/db-connect.php';
 
 // Enable error reporting
 error_reporting(E_ALL);
@@ -37,3 +37,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
     echo json_encode(array("message" => "Invalid request method"));
 }
+
+$conn->close();

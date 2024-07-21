@@ -1,5 +1,5 @@
 <?php
-include './db-connect.php';
+include './partials/db-connect.php';
 
 // enable error reporting
 error_reporting(E_ALL);
